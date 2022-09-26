@@ -11,10 +11,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Product App',
       debugShowCheckedModeBanner: false,
+      // de esta dorma se cambian a nivel global  el color de todos los scalfold de la app.
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.grey[300],
+      ),
+      
       initialRoute: 'login',
       routes: {
         'login': (_) => const LoginScreenPage(),
-        'home': (_) => const MainScreenPage() 
+        'home': (_) => const MainScreenPage()
       },
       home: Scaffold(
         appBar: AppBar(
