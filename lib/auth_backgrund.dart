@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:formulario/widgets/widget.dart';
 
 class AuthBackgrund extends StatelessWidget {
-  const AuthBackgrund({super.key});
+  const AuthBackgrund({super.key, required this.child});
+
+//// esta clasde recibira un widget y sera required
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +20,8 @@ class AuthBackgrund extends StatelessWidget {
 
           // icon in the center
           CenterIcon(),
+
+          child,
         ],
       ),
     );
