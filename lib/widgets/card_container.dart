@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CardContainerwidget extends StatelessWidget {
-  const CardContainerwidget({super.key});
+  const CardContainerwidget({super.key, required this.child});
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class CardContainerwidget extends StatelessWidget {
         height: 300,
         //color: Colors.amber,
         decoration: _createCardDecoration(),
+        child: child,
       ),
     );
   }

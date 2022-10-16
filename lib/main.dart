@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:formulario/desings/glass.dart';
+import 'package:formulario/desings/neumorphism.dart';
 import 'package:formulario/sreens/screens.dart';
 
 void main() => runApp(const MyApp());
@@ -15,11 +17,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],
       ),
-      
+
       initialRoute: 'login',
       routes: {
         'login': (_) => const LoginScreenPage(),
-        'home': (_) => const MainScreenPage()
+        'home': (_) => const MainScreenPage(),
+        'neumo': (_) => const Neumorphs(),
+        'glass': (_) => const GlassEfect(),
       },
       home: Scaffold(
         appBar: AppBar(
