@@ -5,6 +5,17 @@ class MainScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.amberAccent,
+      child: Center(
+        child: Column(
+          children: [
+            Text('data'),
+          ],
+        ),
+      ),
+    );
   }
 }
