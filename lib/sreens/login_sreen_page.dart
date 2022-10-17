@@ -133,25 +133,40 @@ class _loginForm extends StatelessWidget {
             height: 30,
           ),
           MaterialButton(
-            onPressed: (() {
-              if (loginForm.isFormValidated()) {
-                return;
-              } else {
-                Navigator.pushReplacementNamed(context, 'home');
-              }
-            }),
+            onPressed: (loginForm.isFormValidated()
+                ? null
+                : () async {
+                    if (!loginForm.isFormValidated()) {
+                      return;
+                    } else {
+                      // regresa al home pero sin posibidad de regresar  al login, que
+                      // esta line elimina la ruta del arbol de widget.
+                      Navigator.pushReplacementNamed(context, 'home');
+                      // esta line ame sirve para cambiar el texto que a ESPERE
+                      loginForm.isLoading = true;
+
+                      // esta linea me sive para quitar el teclado cuando se presione el boton de acepatr.
+                      FocusScope.of(context).unfocus();
+                      await Future.delayed(
+                        // esta linea simula un backend,
+                        const Duration(seconds: 3),
+                      );
+
+                      loginForm.isLoading = false;
+
+                      Navigator.popAndPushNamed(context, 'home');
+                    }
+                  }),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
             disabledColor: Colors.grey,
             elevation: 0,
             color: Colors.deepPurple,
-            child: Container(
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                child: Text(
-                  'Ingresar',
-                  style: TextStyle(color: Colors.white),
-                ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+              child: Text(
+                loginForm.isLoading ? 'Espere..' : 'Ingresar',
+                style: const TextStyle(color: Colors.white),
               ),
             ),
           ),
